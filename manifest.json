@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Tab Manager",
+    "version": "1.0",
+    "description": "Efficiently manage and organize your Chrome tabs",
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "web_accessible_resources": [{
+      "resources": ["alarm.mp3"],
+      "matches": ["<all_urls>"]
+    }, {
+      "resources": ["suspended.html"],
+      "matches": ["<all_urls>"]
+    }],
+    "permissions": [
+        "storage",
+        "tabs",
+        "activeTab",
+        "tabGroups",
+        "notifications",
+        "host-permissions"
+    ]
+  }

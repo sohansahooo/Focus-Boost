@@ -1,0 +1,547 @@
+:root {
+  --primary-color: #2196f3;
+  --primary-dark: #1976d2;
+  --background-dark: #1a1a1a;
+  --background-light: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent-color: #64b5f6;
+  --danger-color: #f44336;
+  --success-color: #4caf50;
+  --card-background: #333333;
+  --border-radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-dark);
+  color: var(--text-primary);
+  width: 400px;
+  height: 600px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  flex-wrap: nowrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  flex: 0 0 150px;
+  height: 100%;
+  background-color: var(--background-light);
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #404040;
+}
+
+.logo {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  position: relative;
+}
+
+.nav-button i {
+  font-size: 20px;
+}
+
+.nav-button span {
+  font-size: 12px;
+}
+
+.nav-button:hover {
+  background-color: rgba(33, 150, 243, 0.1);
+  color: var(--primary-color);
+}
+
+.nav-button.active {
+  color: var(--primary-color);
+  background-color: rgba(33, 150, 243, 0.15);
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+  min-width: 0;
+  display: block;
+  position: relative;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: var(--text-primary);
+}
+
+/* Card Styles */
+.card {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Button Styles */
+.action-button,
+.primary-button,
+.secondary-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.action-button,
+.primary-button {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.secondary-button {
+  background-color: var(--card-background);
+  color: var(--text-primary);
+  border: 1px solid var(--primary-color);
+}
+
+.action-button:hover,
+.primary-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.secondary-button:hover {
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+/* Tab Content */
+.tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: var(--transition);
+}
+
+.tab-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
+}
+
+/* Notes Styles */
+.notes-container {
+  padding: 15px;
+}
+
+.note-input {
+  margin-bottom: 15px;
+}
+
+.note-item {
+  background-color: var(--card-background);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  transition: var(--transition);
+}
+
+.note-content {
+  flex-grow: 1;
+}
+
+.note-text {
+  color: var(--text-primary);
+  margin-bottom: 5px;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.note-date {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.delete-note {
+  background: none;
+  border: none;
+  color: var(--danger-color);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.delete-note:hover {
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.delete-note i {
+  font-size: 14px;
+}
+
+#savedNotes {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* Custom Scrollbar */
+#savedNotes::-webkit-scrollbar {
+  width: 6px;
+}
+
+#savedNotes::-webkit-scrollbar-track {
+  background: var(--background);
+  border-radius: 3px;
+}
+
+#savedNotes::-webkit-scrollbar-thumb {
+  background: var(--text-secondary);
+  border-radius: 3px;
+}
+
+#savedNotes::-webkit-scrollbar-thumb:hover {
+  background: var(--text-primary);
+}
+
+/* Pomodoro Styles */
+.pomodoro-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.timer-card {
+  background-color: var(--card-background);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.timer {
+  font-size: 48px;
+  font-weight: bold;
+  color: var(--primary-color);
+  font-family: 'Roboto Mono', monospace;
+}
+
+.timer-type {
+  color: var(--text-secondary);
+  margin-top: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pomodoro-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.settings-card {
+  background-color: var(--card-background);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin-top: 20px;
+}
+
+.setting-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--background-dark);
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-item label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-primary);
+}
+
+#durationDisplay,
+#defaultBreakDisplay {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--background-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+    margin: 0;
+  }
+
+  .sidebar {
+    flex: 0 0 auto;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #404040;
+    flex-direction: row;
+    padding: 10px;
+  }
+
+  .nav-menu {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-button {
+    width: auto;
+    padding: 8px 12px;
+  }
+
+  .logo {
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+}
+
+/* Button Group Spacing */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Note Input Area */
+.note-input {
+  margin-bottom: 20px;  /* Increased space after input area */
+}
+
+#quickNote {
+  width: 100%;
+  margin-bottom: 10px;  /* Adds space after textarea */
+  padding: 12px;
+  border-radius: var(--border-radius);
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  resize: vertical;
+}
+
+/* Primary and Secondary Buttons */
+.primary-button,
+.secondary-button {
+  padding: 8px 16px;  /* Increased padding for better clickable area */
+  min-width: 100px;   /* Ensures minimum button width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;  /* Space between icon and text */
+}
+
+.primary-button i,
+.secondary-button i {
+  font-size: 14px;  /* Consistent icon size */
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Update button styles */
+.primary-button,
+.secondary-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.primary-button {
+  background: var(--primary-color);
+  color: white;
+}
+
+.secondary-button {
+  background: var(--card-background);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.primary-button:active,
+.secondary-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+#alarmModal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: none;
+}
+
+.alarm-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.alarm-modal h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2em;
+}
+
+.alarm-modal p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.alarm-modal button {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+}
+
+/* Add these styles for the duration slider */
+.duration-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--background-dark);
+    outline: none;
+    margin: 15px 0;
+    position: relative;
+}
+
+.duration-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: -2px;
+}
+
+.duration-slider::-webkit-slider-thumb:hover {
+    background: var(--primary-dark);
+    transform: scale(1.1);
+}

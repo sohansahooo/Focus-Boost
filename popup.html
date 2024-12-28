@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tab Manager</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <nav class="nav-menu">
+        <button class="nav-button active" data-tab="tabManager">
+          <i class="fas fa-table-columns"></i>
+          <span>Tabs</span>
+        </button>
+        <button class="nav-button" data-tab="notes">
+          <i class="fas fa-note-sticky"></i>
+          <span>Notes</span>
+        </button>
+        <button class="nav-button" data-tab="pomodoro">
+          <i class="fas fa-clock"></i>
+          <span>Focus</span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="main-content">
+      <div id="tabManager" class="tab-content active">
+        <h2>Tab Manager</h2>
+        <div class="card-grid">
+          <div class="card">
+            <button id="groupTabs" class="action-button">
+              <i class="fas fa-object-group"></i>
+              Group Similar Tabs
+            </button>
+          </div>
+          <div class="card">
+            <button id="suspendInactive" class="action-button">
+              <i class="fas fa-pause"></i>
+              Suspend Inactive
+            </button>
+          </div>
+          <div class="card">
+            <button id="removeDuplicates" class="action-button">
+              <i class="fas fa-clone"></i>
+              Remove Duplicate Tabs
+            </button>
+          </div>
+        </div>
+        <div id="tabList" class="tab-list"></div>
+      </div>
+
+      <div id="notes" class="tab-content">
+        <div class="notes-container">
+          <div class="note-input">
+            <textarea id="quickNote" placeholder="Type your note here..." rows="3"></textarea>
+            <div class="button-group">
+              <button id="saveNote" class="primary-button">
+                <i class="fas fa-save"></i> Save Note
+              </button>
+              <button id="clearNote" class="secondary-button">
+                <i class="fas fa-times"></i> Clear
+              </button>
+            </div>
+          </div>
+          <div id="savedNotes"></div>
+        </div>
+      </div>
+
+      <div id="pomodoro" class="tab-content">
+        <!-- <h2>Pomodoro Timer</h2> -->
+        <div class="pomodoro-container">
+          <div class="timer-card">
+            <div class="timer" id="timer">30:00</div>
+            <div class="timer-type">Work Time</div>
+          </div>
+          <div class="button-group">
+            <button id="startPomodoro" class="primary-button">
+              <i class="fas fa-play"></i>
+            </button>
+            <button id="pausePomodoro" class="secondary-button">
+              <i class="fas fa-pause"></i>
+            </button>
+            <button id="resetPomodoro" class="secondary-button">
+              <i class="fas fa-rotate"></i>
+            </button>
+          </div>
+          <div class="settings-card">
+            <div class="setting-item">
+              <label>Work Duration: <span id="durationDisplay">30</span> min</label>
+              <input type="range" 
+                     id="workDuration" 
+                     value="30" 
+                     min="1" 
+                     max="60" 
+                     class="duration-slider">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+  <script src="pomodoro.js"></script>
+  <script src="alarm.js"></script>
+  <script src="note.js"></script>
+  <script src="tab-manager.js"></script>
+</body>
+
+</html>
